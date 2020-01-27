@@ -1,13 +1,14 @@
-curl "http://localhost:4741/bookclub_members" \
+curl "http://localhost:4741/books" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{
-    "bookclub_member": {
-      "bookclub_id": "'"${BOOKID}"'",
-      "title": "'"${TTILE}"'",
-      "author": "'"${AUTHOR}"'"
+    "book": {
+      "bookclub_id": "'"${BOOKCLUB}"'",
+      "title": "'"${TITLE}"'",
+      "author": "'"${AUTHOR}"'",
+      "user_id": "'"${USER}"'"
     }
    }'
 
