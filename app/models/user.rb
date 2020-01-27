@@ -3,4 +3,6 @@
 class User < ApplicationRecord
   include Authentication
   has_many :examples
+  has_many :bookclub_members, dependent: :destroy
+  has_many :bookclubs, through: :bookclub_members
 end

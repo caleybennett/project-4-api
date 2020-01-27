@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 2020_01_27_170658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookclub_members", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "bookclub_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bookclub_id"], name: "index_bookclub_members_on_bookclub_id"
+    t.index ["user_id"], name: "index_bookclub_members_on_user_id"
+  end
+
+  create_table "bookclubs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "examples", force: :cascade do |t|
     t.text "text", null: false
@@ -33,5 +48,7 @@ ActiveRecord::Schema.define(version: 2) do
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
+  add_foreign_key "bookclub_members", "bookclubs"
+  add_foreign_key "bookclub_members", "users"
   add_foreign_key "examples", "users"
 end
