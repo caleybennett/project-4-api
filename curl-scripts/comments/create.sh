@@ -7,7 +7,7 @@ curl "http://localhost:4741/comments" \
     "comment": {
       "user_id": "'"${USER}"'",
       "book_id": "'"${BOOK}"'",
-      "text": "'"${TEXT}"'",
+      "text": "'"${TEXT}"'"
     }
   }'
 
